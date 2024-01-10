@@ -1,0 +1,6 @@
+{
+    "bodies" : [
+        {"id": 1, "name":"Earth", "hasWater": true},
+        {"id": 2, "name":"Mars", "hasWater": true}
+    ]
+}

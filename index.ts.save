@@ -1,14 +1,24 @@
 import express, { Request, Response } from 'express';
 import axios from 'axios';
+import * as fs from 'fs';
+
 
 const app = express();
 const PORT = 3000;
 
+
+function readJSon(fileName: string) : any{
+    try {
+    const rawData: string = fs.readFileSync(fileName, 'utf8');
+    const jsonData: any = JSON.parse(rawData);
+    console.log(jsonData); // Affichage du contenu du fichier JSON
+    } catch (error) {
+    console.error('Error reading JSON file:', error);
+    }
+}
+
 // Exemple de données (vous pouvez utiliser une base de données ou une source de données appropriée)
-const Water_astres = [
-    {id: 1, name:"Earth", hasWater: true},
-    {id: 2, name:"Mars", hasWater: true},
-];
+const Water_astres = readJSon('astreswater.json');
 
 // Route GET pour récupérer tous les astres du système solaire
 app.get('/api/water_presence', (req: Request, res: Response) => {
